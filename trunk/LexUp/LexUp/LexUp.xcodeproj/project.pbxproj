@@ -1,0 +1,417 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* LexUpAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* LexUpAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		970B31DB147CB42000940AB5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 970B31DA147CB42000940AB5 /* libz.dylib */; };
+		974FD708147DFD4600BF6CDA /* ImportDictionariesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 974FD706147DFD4600BF6CDA /* ImportDictionariesController.m */; };
+		974FD709147DFD4600BF6CDA /* ImportDictionariesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 974FD707147DFD4600BF6CDA /* ImportDictionariesController.xib */; };
+		978347C71470ABE300B303F4 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 978347C61470ABE300B303F4 /* MainWindow-iPad.xib */; };
+		978355F5147CB0B1002D3C20 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 978355F2147CB0B1002D3C20 /* NSDataAdditions.m */; };
+		978355F6147CB0B1002D3C20 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 978355F4147CB0B1002D3C20 /* TBXML.m */; };
+		CE873CCE12FDFAFB00ED742F /* data.slt in Resources */ = {isa = PBXBuildFile; fileRef = CE873CC612FDFAFB00ED742F /* data.slt */; };
+		CE873CCF12FDFAFB00ED742F /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE873CC712FDFAFB00ED742F /* Entitlements.plist */; };
+		CE873CD012FDFAFB00ED742F /* EntriesListView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE873CC912FDFAFB00ED742F /* EntriesListView.m */; };
+		CE873CD112FDFAFB00ED742F /* LexUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE873CCA12FDFAFB00ED742F /* LexUpViewController.xib */; };
+		CE873CD212FDFAFB00ED742F /* WordDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE873CCC12FDFAFB00ED742F /* WordDescriptionViewController.m */; };
+		CE873CD312FDFAFB00ED742F /* WordDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE873CCD12FDFAFB00ED742F /* WordDescriptionViewController.xib */; };
+		CE873CDC12FDFB1800ED742F /* DictionariesSelectorController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE873CD512FDFB1800ED742F /* DictionariesSelectorController.m */; };
+		CE873CDD12FDFB1800ED742F /* DictionariesSelectorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE873CD612FDFB1800ED742F /* DictionariesSelectorController.xib */; };
+		CE873CDE12FDFB1800ED742F /* Global.m in Sources */ = {isa = PBXBuildFile; fileRef = CE873CD812FDFB1800ED742F /* Global.m */; };
+		CE873CDF12FDFB1800ED742F /* LexUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE873CDA12FDFB1800ED742F /* LexUpViewController.m */; };
+		CE873CF412FDFB4100ED742F /* lexcore.c in Sources */ = {isa = PBXBuildFile; fileRef = CE873CF012FDFB4100ED742F /* lexcore.c */; };
+		CE873CF512FDFB4100ED742F /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = CE873CF212FDFB4100ED742F /* sqlite3.c */; };
+		CE873D8712FE03F000ED742F /* CardTemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = CE873D8612FE03F000ED742F /* CardTemplate.html */; };
+		CE873D9B12FE070500ED742F /* DictionaryTemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = CE873D9A12FE070500ED742F /* DictionaryTemplate.html */; };
+		CE873E5512FF7CA000ED742F /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CE873E5412FF7CA000ED742F /* icon.png */; };
+		CE8D92DC130110BA0030ACD8 /* SqliteConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8D92DB130110BA0030ACD8 /* SqliteConnection.m */; };
+		CE8D94BF1303A14D0030ACD8 /* LexDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8D94BE1303A14D0030ACD8 /* LexDictionary.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* LexUpAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LexUpAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* LexUpAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LexUpAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* LexUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LexUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* LexUp_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LexUp_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* LexUp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "LexUp-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		970B31DA147CB42000940AB5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		974FD705147DFD4600BF6CDA /* ImportDictionariesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImportDictionariesController.h; path = ../ImportDictionariesController.h; sourceTree = "<group>"; };
+		974FD706147DFD4600BF6CDA /* ImportDictionariesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImportDictionariesController.m; path = ../ImportDictionariesController.m; sourceTree = "<group>"; };
+		974FD707147DFD4600BF6CDA /* ImportDictionariesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImportDictionariesController.xib; sourceTree = "<group>"; };
+		978347C61470ABE300B303F4 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
+		978355F1147CB0B1002D3C20 /* NSDataAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataAdditions.h; sourceTree = "<group>"; };
+		978355F2147CB0B1002D3C20 /* NSDataAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataAdditions.m; sourceTree = "<group>"; };
+		978355F3147CB0B1002D3C20 /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
+		978355F4147CB0B1002D3C20 /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXML.m; sourceTree = "<group>"; };
+		CE873CC612FDFAFB00ED742F /* data.slt */ = {isa = PBXFileReference; lastKnownFileType = file; path = data.slt; sourceTree = "<group>"; };
+		CE873CC712FDFAFB00ED742F /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		CE873CC812FDFAFB00ED742F /* EntriesListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EntriesListView.h; path = ../EntriesListView.h; sourceTree = "<group>"; };
+		CE873CC912FDFAFB00ED742F /* EntriesListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EntriesListView.m; path = ../EntriesListView.m; sourceTree = "<group>"; };
+		CE873CCA12FDFAFB00ED742F /* LexUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LexUpViewController.xib; sourceTree = "<group>"; };
+		CE873CCB12FDFAFB00ED742F /* WordDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WordDescriptionViewController.h; path = ../WordDescriptionViewController.h; sourceTree = "<group>"; };
+		CE873CCC12FDFAFB00ED742F /* WordDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WordDescriptionViewController.m; path = ../WordDescriptionViewController.m; sourceTree = "<group>"; };
+		CE873CCD12FDFAFB00ED742F /* WordDescriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WordDescriptionViewController.xib; sourceTree = "<group>"; };
+		CE873CD412FDFB1800ED742F /* DictionariesSelectorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionariesSelectorController.h; sourceTree = "<group>"; };
+		CE873CD512FDFB1800ED742F /* DictionariesSelectorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionariesSelectorController.m; sourceTree = "<group>"; };
+		CE873CD612FDFB1800ED742F /* DictionariesSelectorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DictionariesSelectorController.xib; path = Classes/DictionariesSelectorController.xib; sourceTree = "<group>"; };
+		CE873CD712FDFB1800ED742F /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
+		CE873CD812FDFB1800ED742F /* Global.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Global.m; sourceTree = "<group>"; };
+		CE873CD912FDFB1800ED742F /* LexUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LexUpViewController.h; sourceTree = "<group>"; };
+		CE873CDA12FDFB1800ED742F /* LexUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LexUpViewController.m; sourceTree = "<group>"; };
+		CE873CF012FDFB4100ED742F /* lexcore.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lexcore.c; sourceTree = "<group>"; };
+		CE873CF112FDFB4100ED742F /* lexcore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lexcore.h; sourceTree = "<group>"; };
+		CE873CF212FDFB4100ED742F /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
+		CE873CF312FDFB4100ED742F /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
+		CE873D8612FE03F000ED742F /* CardTemplate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = CardTemplate.html; sourceTree = "<group>"; };
+		CE873D9A12FE070500ED742F /* DictionaryTemplate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = DictionaryTemplate.html; sourceTree = "<group>"; };
+		CE873E5412FF7CA000ED742F /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		CE8CA44F1305041D00C3367B /* TouchEventObserverDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TouchEventObserverDelegate.h; path = ../TouchEventObserverDelegate.h; sourceTree = "<group>"; };
+		CE8D92DA130110BA0030ACD8 /* SqliteConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqliteConnection.h; sourceTree = "<group>"; };
+		CE8D92DB130110BA0030ACD8 /* SqliteConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqliteConnection.m; sourceTree = "<group>"; };
+		CE8D94BD1303A14D0030ACD8 /* LexDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LexDictionary.h; sourceTree = "<group>"; };
+		CE8D94BE1303A14D0030ACD8 /* LexDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LexDictionary.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				970B31DB147CB42000940AB5 /* libz.dylib in Frameworks */,
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CE8D94BC1303A1170030ACD8 /* LexcoreWrappers */,
+				CE873CEE12FDFB4100ED742F /* lexcore */,
+				CE873CD412FDFB1800ED742F /* DictionariesSelectorController.h */,
+				CE873CD512FDFB1800ED742F /* DictionariesSelectorController.m */,
+				CE873CD712FDFB1800ED742F /* Global.h */,
+				CE873CD812FDFB1800ED742F /* Global.m */,
+				CE873CD912FDFB1800ED742F /* LexUpViewController.h */,
+				CE873CDA12FDFB1800ED742F /* LexUpViewController.m */,
+				CE873CC812FDFAFB00ED742F /* EntriesListView.h */,
+				CE873CC912FDFAFB00ED742F /* EntriesListView.m */,
+				974FD705147DFD4600BF6CDA /* ImportDictionariesController.h */,
+				974FD706147DFD4600BF6CDA /* ImportDictionariesController.m */,
+				CE8CA44F1305041D00C3367B /* TouchEventObserverDelegate.h */,
+				CE873CCB12FDFAFB00ED742F /* WordDescriptionViewController.h */,
+				CE873CCC12FDFAFB00ED742F /* WordDescriptionViewController.m */,
+				1D3623240D0F684500981E51 /* LexUpAppDelegate.h */,
+				1D3623250D0F684500981E51 /* LexUpAppDelegate.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* LexUp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				CE873CC712FDFAFB00ED742F /* Entitlements.plist */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				978355F0147CB021002D3C20 /* TBXML */,
+				978347C51470ABE000B303F4 /* iPad */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* LexUp_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CE873E5412FF7CA000ED742F /* icon.png */,
+				CE873D8612FE03F000ED742F /* CardTemplate.html */,
+				CE873D9A12FE070500ED742F /* DictionaryTemplate.html */,
+				CE873CD612FDFB1800ED742F /* DictionariesSelectorController.xib */,
+				974FD707147DFD4600BF6CDA /* ImportDictionariesController.xib */,
+				CE873CCA12FDFAFB00ED742F /* LexUpViewController.xib */,
+				CE873CCD12FDFAFB00ED742F /* WordDescriptionViewController.xib */,
+				CE873CC612FDFAFB00ED742F /* data.slt */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* LexUp-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				970B31DA147CB42000940AB5 /* libz.dylib */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		978347C51470ABE000B303F4 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				978347C61470ABE300B303F4 /* MainWindow-iPad.xib */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
+		978355F0147CB021002D3C20 /* TBXML */ = {
+			isa = PBXGroup;
+			children = (
+				978355F1147CB0B1002D3C20 /* NSDataAdditions.h */,
+				978355F2147CB0B1002D3C20 /* NSDataAdditions.m */,
+				978355F3147CB0B1002D3C20 /* TBXML.h */,
+				978355F4147CB0B1002D3C20 /* TBXML.m */,
+			);
+			name = TBXML;
+			sourceTree = "<group>";
+		};
+		CE873CEE12FDFB4100ED742F /* lexcore */ = {
+			isa = PBXGroup;
+			children = (
+				CE873CF012FDFB4100ED742F /* lexcore.c */,
+				CE873CF112FDFB4100ED742F /* lexcore.h */,
+				CE873CF212FDFB4100ED742F /* sqlite3.c */,
+				CE873CF312FDFB4100ED742F /* sqlite3.h */,
+			);
+			name = lexcore;
+			path = ../lexcore;
+			sourceTree = SOURCE_ROOT;
+		};
+		CE8D94BC1303A1170030ACD8 /* LexcoreWrappers */ = {
+			isa = PBXGroup;
+			children = (
+				CE8D92DA130110BA0030ACD8 /* SqliteConnection.h */,
+				CE8D92DB130110BA0030ACD8 /* SqliteConnection.m */,
+				CE8D94BD1303A14D0030ACD8 /* LexDictionary.h */,
+				CE8D94BE1303A14D0030ACD8 /* LexDictionary.m */,
+			);
+			name = LexcoreWrappers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* LexUp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "LexUp" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LexUp;
+			productName = LexUp;
+			productReference = 1D6058910D05DD3D006BFB54 /* LexUp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "LexUp" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* LexUp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				CE873CCE12FDFAFB00ED742F /* data.slt in Resources */,
+				CE873CCF12FDFAFB00ED742F /* Entitlements.plist in Resources */,
+				CE873CD112FDFAFB00ED742F /* LexUpViewController.xib in Resources */,
+				CE873CD312FDFAFB00ED742F /* WordDescriptionViewController.xib in Resources */,
+				CE873CDD12FDFB1800ED742F /* DictionariesSelectorController.xib in Resources */,
+				CE873D8712FE03F000ED742F /* CardTemplate.html in Resources */,
+				CE873D9B12FE070500ED742F /* DictionaryTemplate.html in Resources */,
+				CE873E5512FF7CA000ED742F /* icon.png in Resources */,
+				978347C71470ABE300B303F4 /* MainWindow-iPad.xib in Resources */,
+				974FD709147DFD4600BF6CDA /* ImportDictionariesController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* LexUpAppDelegate.m in Sources */,
+				CE873CD012FDFAFB00ED742F /* EntriesListView.m in Sources */,
+				CE873CD212FDFAFB00ED742F /* WordDescriptionViewController.m in Sources */,
+				CE873CDC12FDFB1800ED742F /* DictionariesSelectorController.m in Sources */,
+				CE873CDE12FDFB1800ED742F /* Global.m in Sources */,
+				CE873CDF12FDFB1800ED742F /* LexUpViewController.m in Sources */,
+				CE873CF412FDFB4100ED742F /* lexcore.c in Sources */,
+				CE873CF512FDFB4100ED742F /* sqlite3.c in Sources */,
+				CE8D92DC130110BA0030ACD8 /* SqliteConnection.m in Sources */,
+				CE8D94BF1303A14D0030ACD8 /* LexDictionary.m in Sources */,
+				978355F5147CB0B1002D3C20 /* NSDataAdditions.m in Sources */,
+				978355F6147CB0B1002D3C20 /* TBXML.m in Sources */,
+				974FD708147DFD4600BF6CDA /* ImportDictionariesController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = LexUp_Prefix.pch;
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = DEBUG;
+				INFOPLIST_FILE = "LexUp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PRODUCT_NAME = LexUp;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = LexUp_Prefix.pch;
+				INFOPLIST_FILE = "LexUp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PRODUCT_NAME = LexUp;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos4.0;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "LexUp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "LexUp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
