@@ -7,6 +7,7 @@
 //
 
 #import "DictionariesSelectorController.h"
+#import "ImportDictionariesController.h"
 #import "Global.h"
 #import "SqliteConnection.h"
 #import "LexDictionary.h"
@@ -16,40 +17,59 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [_groupedDictionaries count];
+    return [_groupedDictionaries count] + 1 /* import row */;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSArray *dics = [_groupedDictionaries objectForKey:[[_groupedDictionaries allKeys] objectAtIndex:section]];
+    // if it's import row
+    if(section == 0)
+        return 1;
+    
+    // if it's not import row
+    NSArray *dics = [_groupedDictionaries objectForKey:[[_groupedDictionaries allKeys] objectAtIndex:(section - 1)]];
     return [dics count];
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    UITableViewCell* cell = [tView dequeueReusableCellWithIdentifier:@"BaseCell"];
-    if(!cell)
-    {        
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"BaseCell"] autorelease];
+    UITableViewCell* cell;
+    
+    if(indexPath.section > 0)
+    {
+        cell = [tView dequeueReusableCellWithIdentifier:@"dictionaryCell"];
+        if(!cell)
+        {        
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"dictionaryCell"] autorelease];
+            
+            CGRect rect = CGRectMake(220, 8, 1, 1);
+            UISwitch* switch1 = [[[UISwitch alloc] initWithFrame:rect] autorelease];
+            [switch1 addTarget:self action:@selector(dictionaryEnabled:) forControlEvents:UIControlEventValueChanged];
+            switch1.transform = CGAffineTransformMakeScale(0.7, 0.7);
+            [switch1 setTag:13];
+            
+            [cell addSubview:switch1];
+        }
         
-        CGRect rect = CGRectMake(220, 8, 1, 1);
-        UISwitch* switch1 = [[[UISwitch alloc] initWithFrame:rect] autorelease];
-        [switch1 addTarget:self action:@selector(dictionaryEnabled:) forControlEvents:UIControlEventValueChanged];
-        switch1.transform = CGAffineTransformMakeScale(0.7, 0.7);
-        [switch1 setTag:13];
+        LexDictionary *dic = [[_groupedDictionaries objectForKey:[[_groupedDictionaries allKeys] objectAtIndex:(indexPath.section - 1)]] objectAtIndex:indexPath.row];
         
-        [cell addSubview:switch1];
+        NSString* name = [NSString stringWithUTF8String:[dic get]->name];
+        cell.textLabel.text = name;
+        
+        UISwitch* sw = (UISwitch*)[cell viewWithTag:13];
+        BOOL on = [dic get]->enabled;
+        [sw setOn:on];
     }
-    
-    LexDictionary *dic = [[_groupedDictionaries objectForKey:[[_groupedDictionaries allKeys] objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
-
-    NSString* name = [NSString stringWithUTF8String:[dic get]->name];
-    cell.textLabel.text = name;
-    
-    UISwitch* sw = (UISwitch*)[cell viewWithTag:13];
-    BOOL on = [dic get]->enabled;
-    [sw setOn:on];
-    //[name release];
+    else
+    {
+        cell = [tView dequeueReusableCellWithIdentifier:@"importCell"];
+        if(!cell)
+        {
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"importCell"] autorelease];
+            cell.textLabel.text = @"Import more dictionaries";
+            cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+        }
+    }
     
     return cell;
 }
@@ -60,7 +80,7 @@
     UITableViewCell*cell = (UITableViewCell*)sw.superview;
     NSIndexPath* cellPath = [self.tableView indexPathForCell:cell];
     
-    LexDictionary *dicW = [[_groupedDictionaries objectForKey:[[_groupedDictionaries allKeys] objectAtIndex:cellPath.section]] objectAtIndex:cellPath.row];
+    LexDictionary *dicW = [[_groupedDictionaries objectForKey:[[_groupedDictionaries allKeys] objectAtIndex:(cellPath.section - 1)]] objectAtIndex:cellPath.row];
     lex_dictionary *dic = [dicW get];
     dic->enabled = sw.on;
     
@@ -120,6 +140,16 @@
     }
 }
 
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+ {
+     if(indexPath.section == 0)
+     {
+         ImportDictionariesController* crl = [[ImportDictionariesController alloc] init];
+         [self.navigationController pushViewController:crl animated:YES];
+         [crl release];
+     }
+ }
 
 /*
 // Override to allow orientations other than the default portrait orientation.
