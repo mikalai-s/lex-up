@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ImportDictionariesController : UIViewController
+@interface ImportDictionariesController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+{
+    IBOutlet UITableView* dictionariesToImportTable;
+    
+    NSMutableDictionary *dictionary;
+}
 
 @end

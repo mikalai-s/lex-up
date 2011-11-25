@@ -12,8 +12,6 @@
 #import "global.h"
 #import "SqliteConnection.h"
 
-#import "tbxml.h"
-
 @implementation LexUpViewController
   
 
@@ -114,36 +112,6 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-    
-   //----     
-    NSURL* url = [[[NSURL alloc] initWithString:@"http://lexup.msilivonik.com/webservice.svc/dictionaries"] autorelease];
-    NSURLResponse* response = nil;
-    NSData* data = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:url] returningResponse:&response error:nil];
-    NSString *xml = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-    //----------
-    
-    TBXML *tbxml = [[[TBXML alloc] initWithXMLString:xml] autorelease];
-    
-    if(tbxml.rootXMLElement != nil)
-    {
-        NSMutableDictionary *dictionary = [[[NSMutableDictionary alloc] init] autorelease];
-        
-        TBXMLElement *dictionaryElement = tbxml.rootXMLElement->firstChild;
-        while(dictionaryElement != nil)
-        {
-            NSString *id = [[[NSString alloc] initWithUTF8String:dictionaryElement->firstChild->text] autorelease];
-            NSString *name = [[[NSString alloc] initWithUTF8String:dictionaryElement->firstChild->nextSibling->text] autorelease];
-            
-            [dictionary setValue:name forKey:id];
-            
-            dictionaryElement = dictionaryElement->nextSibling;
-        }
-    }
-    
-    
-    
     
     CGRect r = CGRectMake(0.0f, 0.0f, 230.0f + 78.0f, 44.0f);
     UIView *v = [[[UIView alloc] initWithFrame:r] autorelease];
