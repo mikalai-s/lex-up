@@ -9,6 +9,7 @@
 #import "ImportDictionariesController.h"
 #import "TBXML.h"
 #import "ASIHTTPRequest.h"
+#import "SSZipArchive.h"
 
 @implementation ImportDictionariesController
 
@@ -61,16 +62,44 @@
 
 - (void) tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    NSString *id = [[dictionary allKeys] objectAtIndex:indexPath.row];
-    /*
-    lex_words* candidates = [self get_candidates];
-    if(candidates)
+    NSString *guid = [[dictionary allKeys] objectAtIndex:indexPath.row];
+    
+    NSString *urlString = [NSString stringWithFormat:@"http://lexup.msilivonik.com/Download.aspx?guid=%@", guid];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSString *tempFolder = NSTemporaryDirectory();
+    NSString *downloadPath = [tempFolder stringByAppendingPathComponent:@"dic.zip"];
+   
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    [request setDownloadDestinationPath:downloadPath];
+    [request startSynchronous];
+    
+    if([request responseStatusCode] == 200)
     {
-        WordDescriptionViewController* view = [[WordDescriptionViewController alloc] initWithEntry:candidates->items[indexPath.row]];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release];
-    }
-     */
+        tempFolder = [tempFolder stringByAppendingPathComponent:@"Zip"];
+        
+        [SSZipArchive unzipFileAtPath:downloadPath toDestination:tempFolder];
+        NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:tempFolder error:nil];
+        for(int i = 0; i < files.count; i ++)
+        {
+            NSString *xmlFile = (NSString*)[files objectAtIndex:i];
+            [self importDictionary:[tempFolder stringByAppendingPathComponent:xmlFile]];
+        }
+        
+        // delete files
+        [[NSFileManager defaultManager] removeItemAtPath:downloadPath error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:tempFolder error:nil];
+    }    
+}
+
+- (void) importDictionary:(NSString *)filePath
+{
+    TBXML *tbxml = [[TBXML alloc] initWithXMLFile:filePath];
+  //  NSString *dictionaryElement = tbxml.rootXMLElement->firstChild->text;    
+    NSString *name = [TBXML valueOfAttributeNamed:@"name" forElement:tbxml.rootXMLElement];
+    NSString *indexLanguage = [TBXML valueOfAttributeNamed:@"indexLanguage" forElement:tbxml.rootXMLElement];
+    NSString *contentLanguage = [TBXML valueOfAttributeNamed:@"contentLanguage" forElement:tbxml.rootXMLElement];
+    
+    [tbxml release];
 }
 
 

@@ -27,6 +27,8 @@
     return [documentsDirectory stringByAppendingPathComponent:@"settings.slt"];
 }
 
+//- (NSSTring*) download
+
 - (NSString*) cardTemplateFileName
 {
     return [[NSBundle mainBundle] pathForResource:@"CardTemplate" ofType:@"html"];

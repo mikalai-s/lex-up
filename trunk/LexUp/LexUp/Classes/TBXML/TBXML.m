@@ -135,6 +135,18 @@
 - (id)initWithXMLFile:(NSString*)aXMLFile {
 	self = [self init];
 	if (self != nil) {
+		// Get uncompressed file contents
+		NSData * data = [NSData dataWithContentsOfFile:aXMLFile];
+		
+		// decode data
+		[self decodeData:data];
+	}
+	return self;
+}
+
+- (id)initWithResourseXMLFile:(NSString*)aXMLFile {
+	self = [self init];
+	if (self != nil) {
 		NSString * filename = [aXMLFile stringByDeletingPathExtension];
 		NSString * extension = [aXMLFile pathExtension];
 		

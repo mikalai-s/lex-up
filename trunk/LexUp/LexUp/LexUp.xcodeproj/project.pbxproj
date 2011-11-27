@@ -30,6 +30,11 @@
 		973C5DA9147F502E0007346E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 973C5DA8147F502E0007346E /* MobileCoreServices.framework */; };
 		974FD708147DFD4600BF6CDA /* ImportDictionariesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 974FD706147DFD4600BF6CDA /* ImportDictionariesController.m */; };
 		974FD709147DFD4600BF6CDA /* ImportDictionariesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 974FD707147DFD4600BF6CDA /* ImportDictionariesController.xib */; };
+		9780B3A01481C0750006FB1F /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 9780B3951481C0750006FB1F /* ioapi.c */; };
+		9780B3A11481C0750006FB1F /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 9780B3971481C0750006FB1F /* mztools.c */; };
+		9780B3A21481C0750006FB1F /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 9780B3991481C0750006FB1F /* unzip.c */; };
+		9780B3A31481C0750006FB1F /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 9780B39B1481C0750006FB1F /* zip.c */; };
+		9780B3A41481C0750006FB1F /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 9780B39E1481C0750006FB1F /* SSZipArchive.m */; };
 		978347C71470ABE300B303F4 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 978347C61470ABE300B303F4 /* MainWindow-iPad.xib */; };
 		CE873CCF12FDFAFB00ED742F /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE873CC712FDFAFB00ED742F /* Entitlements.plist */; };
 		CE873CD012FDFAFB00ED742F /* EntriesListView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE873CC912FDFAFB00ED742F /* EntriesListView.m */; };
@@ -93,6 +98,17 @@
 		974FD705147DFD4600BF6CDA /* ImportDictionariesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImportDictionariesController.h; path = ../ImportDictionariesController.h; sourceTree = "<group>"; };
 		974FD706147DFD4600BF6CDA /* ImportDictionariesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImportDictionariesController.m; path = ../ImportDictionariesController.m; sourceTree = "<group>"; };
 		974FD707147DFD4600BF6CDA /* ImportDictionariesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImportDictionariesController.xib; sourceTree = "<group>"; };
+		9780B3941481C0750006FB1F /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		9780B3951481C0750006FB1F /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		9780B3961481C0750006FB1F /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		9780B3971481C0750006FB1F /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		9780B3981481C0750006FB1F /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		9780B3991481C0750006FB1F /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		9780B39A1481C0750006FB1F /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		9780B39B1481C0750006FB1F /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		9780B39C1481C0750006FB1F /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		9780B39D1481C0750006FB1F /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
+		9780B39E1481C0750006FB1F /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
 		978347C61470ABE300B303F4 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		CE873CC712FDFAFB00ED742F /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		CE873CC812FDFAFB00ED742F /* EntriesListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EntriesListView.h; path = ../EntriesListView.h; sourceTree = "<group>"; };
@@ -143,6 +159,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9780B3911481C0750006FB1F /* SSZipArchive */,
 				973C5D9D147F4F810007346E /* TBXML */,
 				973C5D7D147F4F760007346E /* ASI */,
 				CE8D94BC1303A1170030ACD8 /* LexcoreWrappers */,
@@ -267,6 +284,32 @@
 			path = TBXML;
 			sourceTree = "<group>";
 		};
+		9780B3911481C0750006FB1F /* SSZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				9780B3931481C0750006FB1F /* minizip */,
+				9780B39D1481C0750006FB1F /* SSZipArchive.h */,
+				9780B39E1481C0750006FB1F /* SSZipArchive.m */,
+			);
+			path = SSZipArchive;
+			sourceTree = "<group>";
+		};
+		9780B3931481C0750006FB1F /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				9780B3941481C0750006FB1F /* crypt.h */,
+				9780B3951481C0750006FB1F /* ioapi.c */,
+				9780B3961481C0750006FB1F /* ioapi.h */,
+				9780B3971481C0750006FB1F /* mztools.c */,
+				9780B3981481C0750006FB1F /* mztools.h */,
+				9780B3991481C0750006FB1F /* unzip.c */,
+				9780B39A1481C0750006FB1F /* unzip.h */,
+				9780B39B1481C0750006FB1F /* zip.c */,
+				9780B39C1481C0750006FB1F /* zip.h */,
+			);
+			path = minizip;
+			sourceTree = "<group>";
+		};
 		978347C51470ABE000B303F4 /* iPad */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,6 +366,9 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0410;
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "LexUp" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
@@ -387,6 +433,11 @@
 				973C5D9C147F4F760007346E /* Reachability.m in Sources */,
 				973C5DA2147F4F810007346E /* NSDataAdditions.m in Sources */,
 				973C5DA3147F4F810007346E /* TBXML.m in Sources */,
+				9780B3A01481C0750006FB1F /* ioapi.c in Sources */,
+				9780B3A11481C0750006FB1F /* mztools.c in Sources */,
+				9780B3A21481C0750006FB1F /* unzip.c in Sources */,
+				9780B3A31481C0750006FB1F /* zip.c in Sources */,
+				9780B3A41481C0750006FB1F /* SSZipArchive.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

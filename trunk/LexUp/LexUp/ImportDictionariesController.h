@@ -15,4 +15,6 @@
     NSMutableDictionary *dictionary;
 }
 
+- (void) importDictionary:(NSString *)filePath;
+
 @end
