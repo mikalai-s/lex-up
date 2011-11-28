@@ -122,6 +122,12 @@ int lex_settings_set_dictionary_enabled(lex *lx, int dicId, int enabled);
 
 int lex_settings_get_dictionary_enabled(lex *lx, int dicId, int *enabled);
 
+int lex_import_dictionary(lex *lx, const char *name, const char *indexLanguage, const char *contentLanguage);
+/*
+int lex_insert_dictionary(lex *lx, const char *name, int indexLanguageId, int contentLanguageId);
+
+int lex_insert_langauge(lex *lx, const char *name);
+*/
 /* end settings */
 
 

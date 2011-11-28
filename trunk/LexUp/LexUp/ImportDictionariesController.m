@@ -10,6 +10,7 @@
 #import "TBXML.h"
 #import "ASIHTTPRequest.h"
 #import "SSZipArchive.h"
+#import "SqliteConnection.h"
 
 @implementation ImportDictionariesController
 
@@ -98,6 +99,9 @@
     NSString *name = [TBXML valueOfAttributeNamed:@"name" forElement:tbxml.rootXMLElement];
     NSString *indexLanguage = [TBXML valueOfAttributeNamed:@"indexLanguage" forElement:tbxml.rootXMLElement];
     NSString *contentLanguage = [TBXML valueOfAttributeNamed:@"contentLanguage" forElement:tbxml.rootXMLElement];
+    
+    SqliteConnection *con = [[SqliteConnection alloc] init];
+    [con importDictionary:name indexLanguage:indexLanguage contentLanguage:contentLanguage];
     
     [tbxml release];
 }

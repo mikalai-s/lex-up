@@ -79,5 +79,20 @@
     return enabled;
 }
 
+- (int) importDictionary:(NSString*)name indexLanguage:(NSString*)iLang contentLanguage:(NSString*)cLang
+{
+    lex* lx = nil;
+    int dicId;
+    if(lex_open((char*)[[Global sharedInstance].dataFileName UTF8String], (char*)[[Global sharedInstance].settingsFileName UTF8String], &lx, utf8_compare) == 0)
+    {
+        const char *dicName = [name cStringUsingEncoding:NSUTF8StringEncoding];
+        const char *indexLanguage = [iLang cStringUsingEncoding:NSUTF8StringEncoding];
+        const char *contentLanguage = [cLang cStringUsingEncoding:NSUTF8StringEncoding];
+        dicId = lex_import_dictionary(lx, dicName, indexLanguage, contentLanguage);
+    }
+    lex_close(lx);
+    return dicId;
+}
+
 
 @end

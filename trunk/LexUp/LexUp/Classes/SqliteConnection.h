@@ -28,4 +28,6 @@
 
 - (int) getDictionaryEnabled:(int)dicId;
 
+- (int) importDictionary:(NSString*)name indexLanguage:(NSString*)iLang contentLanguage:(NSString*)cLang;
+
 @end

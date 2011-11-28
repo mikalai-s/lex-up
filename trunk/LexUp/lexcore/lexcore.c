@@ -968,3 +968,209 @@ int lex_settings_set_current_languages(lex* lx, lex_language* wlang, lex_languag
 */
 /* end settings */
 
+/* new stuff - import dictionaries */
+
+int lex_get_rowid_by_name(lex *lx, const char *table, const char *name)
+{   
+    int querySize = 1024;
+    char query[querySize];
+    sprintf(query, "select rowid from %s where name = ? limit 1", table);
+    
+    int id = -1;
+    char *tail = 0;
+	sqlite3_stmt* stmt = 0;
+	int result = sqlite3_prepare_v2(lx->dataDb, query, querySize, &stmt, (const char**)&tail);
+    if(SQLITE_OK == result)
+    {
+        result = sqlite3_bind_text(stmt, 1, name, strlen(name) * sizeof(char), SQLITE_STATIC);
+        if(SQLITE_OK == result)
+        {
+            result = sqlite3_step(stmt);
+            if(SQLITE_ROW == result || SQLITE_DONE == result)
+            {
+                id = sqlite3_column_int(stmt, 0);
+            }
+            else
+            {
+                printf("error: sqlite3_step == %s\r\n", sqlite3_errmsg(lx->dataDb));
+            }
+        }
+        else
+        {
+            printf("error: sqlite3_bind == %s\r\n", sqlite3_errmsg(lx->dataDb));
+        }        
+    }
+    else
+    {
+        printf("error: sqlite3_prepare_v2 == %s\r\n", sqlite3_errmsg(lx->dataDb));
+    }
+    
+    if(SQLITE_OK != sqlite3_finalize(stmt))
+    {
+        printf("error: sqlite3_finalize == %s\r\n", sqlite3_errmsg(lx->dataDb));
+    }
+    
+    return id;
+}
+
+int lex_insert_language(lex *lx, const char *name)
+{
+    int querySize = 1024;
+    char query[querySize];
+    sprintf(query, "insert into languages values(?, ?)");
+    
+    int id = -1;
+    char *tail = 0;
+	sqlite3_stmt* stmt = 0;
+	int result = sqlite3_prepare_v2(lx->dataDb, query, querySize, &stmt, (const char**)&tail);
+    if(SQLITE_OK == result)
+    {
+        result = sqlite3_bind_text(stmt, 1, name, strlen(name) * sizeof(char), SQLITE_STATIC);
+        if(SQLITE_OK == result)
+        {
+            char code[3];
+            code[0] = name[0];
+            code[1] = name[1];
+            code[2] = '\0';
+            result = sqlite3_bind_text(stmt, 2, code, strlen(code) * sizeof(char), SQLITE_STATIC);
+            if(SQLITE_OK == result)
+            {
+                result = sqlite3_step(stmt);
+                if(SQLITE_ROW == result || SQLITE_DONE == result)
+                {
+                    id = sqlite3_last_insert_rowid(lx->dataDb);
+                }
+                else
+                {
+                    printf("error: sqlite3_step == %s\r\n", sqlite3_errmsg(lx->dataDb));
+                }
+            }
+            else
+            {
+                printf("error: sqlite3_bind == %s\r\n", sqlite3_errmsg(lx->dataDb));
+            }
+        }
+        else
+        {
+            printf("error: sqlite3_bind == %s\r\n", sqlite3_errmsg(lx->dataDb));
+        }
+    }
+    else
+    {
+        printf("error: sqlite3_prepare_v2 == %s\r\n", sqlite3_errmsg(lx->dataDb));
+    }
+    
+    if(SQLITE_OK != sqlite3_finalize(stmt))
+    {
+        printf("error: sqlite3_finalize == %s\r\n", sqlite3_errmsg(lx->dataDb));
+    }
+    
+    return id;
+}
+
+int lex_insert_dictionary(lex *lx, const char *name, int indexLanguageId, int contentLanguageId)
+{
+    int querySize = 1024;
+    char query[querySize];
+    sprintf(query, "insert into dictionaries(name, word_language_id, card_language_id, ui_order) values(?, ?, ?)");
+    
+    int id = -1;
+    char *tail = 0;
+	sqlite3_stmt* stmt = 0;
+	int result = sqlite3_prepare_v2(lx->dataDb, query, querySize, &stmt, (const char**)&tail);
+    if(SQLITE_OK == result)
+    {
+        result = sqlite3_bind_text(stmt, 1, name, strlen(name) * sizeof(char), SQLITE_STATIC);
+        if(SQLITE_OK == result)
+        {
+            result = sqlite3_bind_int(stmt, 2, indexLanguageId);
+            if(SQLITE_OK == result)
+            {
+                result = sqlite3_bind_int(stmt, 3, contentLanguageId);
+                if(SQLITE_OK == result)
+                {
+                    result = sqlite3_step(stmt);
+                    if(SQLITE_ROW == result || SQLITE_ROW == result)
+                    {
+                        id = sqlite3_last_insert_rowid(lx->dataDb);
+                    }
+                    else
+                    {
+                        printf("error: sqlite3_step == %s\r\n", sqlite3_errmsg(lx->dataDb));
+                    }
+                }
+                else
+                {
+                    printf("error: sqlite3_bind == %s\r\n", sqlite3_errmsg(lx->dataDb));
+                }
+            }
+            else
+            {
+                printf("error: sqlite3_bind == %s\r\n", sqlite3_errmsg(lx->dataDb));
+            }
+        }
+        else
+        {
+            printf("error: sqlite3_bind == %s\r\n", sqlite3_errmsg(lx->dataDb));
+        }
+    }
+    else
+    {
+        printf("error: sqlite3_prepare_v2 == %s\r\n", sqlite3_errmsg(lx->dataDb));
+    }
+    
+    if(SQLITE_OK != sqlite3_finalize(stmt))
+    {
+        printf("error: sqlite3_finalize == %s\r\n", sqlite3_errmsg(lx->dataDb));
+    }
+    
+    return id;
+}
+
+
+int lex_import_dictionary(lex *lx, const char *name, const char *indexLanguage, const char *contentLanguage)
+{
+    // ensure index language
+    int indexLanguageId = lex_get_rowid_by_name(lx, "languages", indexLanguage);
+    if(indexLanguageId == -1)
+    {
+        indexLanguageId = lex_insert_language(lx, indexLanguage);
+    }
+    
+    // ensure content langauge
+    int contentLanguageId = lex_get_rowid_by_name(lx, "languages", contentLanguage);
+    if(contentLanguageId == -1)
+    {
+        contentLanguageId = lex_insert_language(lx, contentLanguage);
+    }
+    
+    // ensure dictionary
+    int dictionaryId = lex_insert_dictionary(lx, name, indexLanguageId, contentLanguageId);
+
+    return dictionaryId;
+}
+                  /*                            
+                                              
+    "create table if not exists languages(name text, code text)"
+    "create table if not exists dictionaries(name text, word_language_id integer, card_language_id integer, ui_enabled integer default 1, ui_order integer)"
+    "create table if not exists cards(word text, dictionary_id integer, card text, word_language_id integer, card_language_id integer)"
+    "create table if not exists settings(option text, value integer)"
+
+    
+    "select distinct id from languages where name = @name"
+    // if not exist
+    "insert into languages(name, code) values(@name, @code)"
+    
+    "select distinct id from languages where name = @name"
+    // if not exist
+    "insert into languages(name, code) values(@name, @code)"
+    
+    
+    "select distinct id from dictionaries where name=@name and word_language_id=@wlang and card_language_id=@clang"
+    // if not exist
+    "insert into languages(name, code) values(@name, @code)"
+    // 
+    
+    
+    "insert into cards(word, dictionary_id, card, word_language_id, card_language_id) values(@word, @dictionary_id, @card, @word_language_id, @card_language_id)";
+}*/
