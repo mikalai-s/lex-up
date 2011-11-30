@@ -7,11 +7,12 @@
 //
 
 #import "Global.h"
+#import "SqliteConnection.h"
 
 
 @implementation Global
 
-
+@synthesize JustImportedDictionary;
 
 // properties
 
@@ -58,7 +59,7 @@
 
 - (id) init
 {
-	self = [super init];	
+	self = [super init];
 		
 	return self;
 }
@@ -96,9 +97,7 @@
     [super dealloc];
 }
 
-
 @end
-
 
 int utf8_compare(void* pArg, int aLength, const void* a, int bLength, const void* b)
 {/*   

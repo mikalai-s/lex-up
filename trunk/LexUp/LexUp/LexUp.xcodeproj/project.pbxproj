@@ -36,6 +36,7 @@
 		9780B3A31481C0750006FB1F /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 9780B39B1481C0750006FB1F /* zip.c */; };
 		9780B3A41481C0750006FB1F /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 9780B39E1481C0750006FB1F /* SSZipArchive.m */; };
 		978347C71470ABE300B303F4 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 978347C61470ABE300B303F4 /* MainWindow-iPad.xib */; };
+		97ADC2D91485FBFD000707F2 /* data.slt in Resources */ = {isa = PBXBuildFile; fileRef = 97ADC2D81485FBFD000707F2 /* data.slt */; };
 		CE873CCF12FDFAFB00ED742F /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE873CC712FDFAFB00ED742F /* Entitlements.plist */; };
 		CE873CD012FDFAFB00ED742F /* EntriesListView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE873CC912FDFAFB00ED742F /* EntriesListView.m */; };
 		CE873CD112FDFAFB00ED742F /* LexUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE873CCA12FDFAFB00ED742F /* LexUpViewController.xib */; };
@@ -110,6 +111,7 @@
 		9780B39D1481C0750006FB1F /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
 		9780B39E1481C0750006FB1F /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
 		978347C61470ABE300B303F4 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
+		97ADC2D81485FBFD000707F2 /* data.slt */ = {isa = PBXFileReference; lastKnownFileType = file; path = data.slt; sourceTree = "<group>"; };
 		CE873CC712FDFAFB00ED742F /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		CE873CC812FDFAFB00ED742F /* EntriesListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EntriesListView.h; path = ../EntriesListView.h; sourceTree = "<group>"; };
 		CE873CC912FDFAFB00ED742F /* EntriesListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EntriesListView.m; path = ../EntriesListView.m; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				97ADC2D81485FBFD000707F2 /* data.slt */,
 				CE873E5412FF7CA000ED742F /* icon.png */,
 				CE873D8612FE03F000ED742F /* CardTemplate.html */,
 				CE873D9A12FE070500ED742F /* DictionaryTemplate.html */,
@@ -400,6 +403,7 @@
 				CE873E5512FF7CA000ED742F /* icon.png in Resources */,
 				978347C71470ABE300B303F4 /* MainWindow-iPad.xib in Resources */,
 				974FD709147DFD4600BF6CDA /* ImportDictionariesController.xib in Resources */,
+				97ADC2D91485FBFD000707F2 /* data.slt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

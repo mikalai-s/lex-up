@@ -21,6 +21,7 @@
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+    DLog();
     
     // Override point for customization after application launch.
     
@@ -42,13 +43,16 @@
     
     UITabBarController* tabController = [[UITabBarController alloc] init];
     tabController.viewControllers = controllers;
-    tabController.delegate = self;
+    //tabController.delegate = self;
     
     [window addSubview:tabController.view];
     [window makeKeyAndVisible];
        
     return YES;
 }
+
+
+
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

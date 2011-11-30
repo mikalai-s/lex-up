@@ -9,8 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "lexcore.h"
 
+#ifdef DEBUG
+#   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#   define DLog(...)
+#endif
+
 @interface Global : NSObject
 {
+    lex_words *_words;
+    bool _justImportedDictionary;
 }
 
 @property (readonly, nonatomic) NSString* dataFileName;
@@ -22,6 +30,8 @@
 @property (readonly, nonatomic) NSString* cardTemplateFileName;
 
 @property (readonly, nonatomic) NSString* dictionaryTemplateFileName;
+
+@property bool JustImportedDictionary;
 
 + (Global *)sharedInstance;
 - (id) init;

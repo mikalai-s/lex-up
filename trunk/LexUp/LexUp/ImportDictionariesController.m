@@ -11,15 +11,20 @@
 #import "ASIHTTPRequest.h"
 #import "SSZipArchive.h"
 #import "SqliteConnection.h"
+#import "Global.h"
+#import "DictionariesSelectorController.h"
 
 @implementation ImportDictionariesController
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+
+- (id)initWithBackView:(DictionariesSelectorController *)backController
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    DLog();
+    
+    self = [super init];
     if (self) {
-        // Custom initialization
+        _backController = backController;
     }
     return self;
 }
@@ -36,16 +41,22 @@
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView*)aTableView
 {
+    DLog();
+    
     return 1;
 }
 
 - (NSInteger) tableView: (UITableView*)aTableView numberOfRowsInSection: (NSInteger)section
 {
+    DLog();
+    
     return dictionary.count;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tView cellForRowAtIndexPath:(NSIndexPath*)indexPath
-{       
+{    
+    DLog();
+    
     UITableViewCell* cell = [tView dequeueReusableCellWithIdentifier:@"BaseCell"];
     if(!cell)
     {
@@ -63,6 +74,8 @@
 
 - (void) tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
+    DLog();
+    
     NSString *guid = [[dictionary allKeys] objectAtIndex:indexPath.row];
     
     NSString *urlString = [NSString stringWithFormat:@"http://lexup.msilivonik.com/Download.aspx?guid=%@", guid];
@@ -94,16 +107,32 @@
 
 - (void) importDictionary:(NSString *)filePath
 {
+    DLog();
+    
+    [Global sharedInstance].JustImportedDictionary = true;
+    
     TBXML *tbxml = [[TBXML alloc] initWithXMLFile:filePath];
-  //  NSString *dictionaryElement = tbxml.rootXMLElement->firstChild->text;    
+    
     NSString *name = [TBXML valueOfAttributeNamed:@"name" forElement:tbxml.rootXMLElement];
     NSString *indexLanguage = [TBXML valueOfAttributeNamed:@"indexLanguage" forElement:tbxml.rootXMLElement];
     NSString *contentLanguage = [TBXML valueOfAttributeNamed:@"contentLanguage" forElement:tbxml.rootXMLElement];
     
+    int ilId, clId;
+    
     SqliteConnection *con = [[SqliteConnection alloc] init];
-    [con importDictionary:name indexLanguage:indexLanguage contentLanguage:contentLanguage];
+    int dictionaryId = [con importDictionary:name indexLanguage:indexLanguage contentLanguage:contentLanguage indexLanguageId:&ilId contentLanguageId:&clId];
+    
+    TBXMLElement *cardElement = tbxml.rootXMLElement->firstChild;
+    while(cardElement != 0)
+    {
+        [con importCard:cardElement->text forWord:cardElement->firstAttribute->value intoDictionary:dictionaryId indexLanguageId:ilId contentLanguageId:clId];
+        
+        cardElement = cardElement->nextSibling;
+    }
     
     [tbxml release];
+    
+    [_backController reloadView];
 }
 
 
@@ -112,6 +141,8 @@
 
 - (void)viewDidLoad
 {
+    DLog();
+    
     [super viewDidLoad];   
     // Do any additional setup after loading the view from its nib.
     
@@ -125,6 +156,8 @@
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
+    DLog();
+    
     // Use when fetching text data
     NSString *responseString = [request responseString];
     
@@ -150,6 +183,8 @@
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
+    DLog();
+
     NSError *error = [request error];
 }
 

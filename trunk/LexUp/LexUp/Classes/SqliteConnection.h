@@ -28,6 +28,8 @@
 
 - (int) getDictionaryEnabled:(int)dicId;
 
-- (int) importDictionary:(NSString*)name indexLanguage:(NSString*)iLang contentLanguage:(NSString*)cLang;
+- (int) importDictionary:(NSString*)name indexLanguage:(NSString*)iLang contentLanguage:(NSString*)cLang indexLanguageId:(int*)ilId contentLanguageId:(int*)clId;
+
+- (void) importCard:(char*)cardText forWord:(char*)word intoDictionary:(int)dictionaryId indexLanguageId:(int)ilId contentLanguageId:(int)clId;
 
 @end

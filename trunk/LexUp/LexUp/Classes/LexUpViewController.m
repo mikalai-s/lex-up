@@ -17,6 +17,8 @@
 
 - (lex_words*) get_candidates
 {
+    DLog();
+    
     if(_candidates == nil)
     {
         SqliteConnection *con = [[SqliteConnection alloc] init];
@@ -28,22 +30,30 @@
 
 - (void) clear_candidates
 {
+    DLog();
+    
     if(_candidates != nil)
         lex_free_words(&_candidates);
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView*)aTableView
 {
+    DLog();
+    
     return 1;
 }
 
 - (NSInteger) tableView: (UITableView*)aTableView numberOfRowsInSection: (NSInteger)section
 {
+    DLog();
+    
     return [self get_candidates]->count;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
+    DLog();
+    
     UITableViewCell* cell = [tView dequeueReusableCellWithIdentifier:@"BaseCell"];
     if(!cell)
     {
@@ -67,6 +77,8 @@
 
 - (void) tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
+    DLog();
+    
     lex_words* candidates = [self get_candidates];
     if(candidates)
     {
@@ -78,6 +90,8 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
+    DLog();
+    
     [self clear_candidates];
     [candidatesTable reloadData];
     
@@ -111,6 +125,8 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+    DLog();
+    
     [super viewDidLoad];
     
     CGRect r = CGRectMake(0.0f, 0.0f, 230.0f + 78.0f, 44.0f);
@@ -130,16 +146,20 @@
 
     [candidatesTable addTouchEventObserver:self];
     
-    [searchField becomeFirstResponder];
+   // [searchField becomeFirstResponder];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event inContentView:(UIView *)view
 {
+    DLog();
+    
     [searchField resignFirstResponder];
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
+    DLog();
+    
     [searchField resignFirstResponder];
 }
 

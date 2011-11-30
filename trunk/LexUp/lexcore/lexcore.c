@@ -986,11 +986,11 @@ int lex_get_rowid_by_name(lex *lx, const char *table, const char *name)
         if(SQLITE_OK == result)
         {
             result = sqlite3_step(stmt);
-            if(SQLITE_ROW == result || SQLITE_DONE == result)
+            if(SQLITE_ROW == result)
             {
                 id = sqlite3_column_int(stmt, 0);
             }
-            else
+            else if(SQLITE_DONE != result)
             {
                 printf("error: sqlite3_step == %s\r\n", sqlite3_errmsg(lx->dataDb));
             }
@@ -1072,7 +1072,7 @@ int lex_insert_dictionary(lex *lx, const char *name, int indexLanguageId, int co
 {
     int querySize = 1024;
     char query[querySize];
-    sprintf(query, "insert into dictionaries(name, word_language_id, card_language_id, ui_order) values(?, ?, ?)");
+    sprintf(query, "insert into dictionaries(name, word_language_id, card_language_id, ui_order) values(?, ?, ?, 0)");
     
     int id = -1;
     char *tail = 0;
@@ -1090,7 +1090,7 @@ int lex_insert_dictionary(lex *lx, const char *name, int indexLanguageId, int co
                 if(SQLITE_OK == result)
                 {
                     result = sqlite3_step(stmt);
-                    if(SQLITE_ROW == result || SQLITE_ROW == result)
+                    if(SQLITE_ROW == result || SQLITE_DONE == result)
                     {
                         id = sqlite3_last_insert_rowid(lx->dataDb);
                     }
@@ -1128,7 +1128,7 @@ int lex_insert_dictionary(lex *lx, const char *name, int indexLanguageId, int co
 }
 
 
-int lex_import_dictionary(lex *lx, const char *name, const char *indexLanguage, const char *contentLanguage)
+int lex_import_dictionary(lex *lx, const char *name, const char *indexLanguage, const char *contentLanguage, int *ilId, int *clId)
 {
     // ensure index language
     int indexLanguageId = lex_get_rowid_by_name(lx, "languages", indexLanguage);
@@ -1146,8 +1146,86 @@ int lex_import_dictionary(lex *lx, const char *name, const char *indexLanguage, 
     
     // ensure dictionary
     int dictionaryId = lex_insert_dictionary(lx, name, indexLanguageId, contentLanguageId);
+    
+    *ilId = indexLanguageId;
+    *clId = contentLanguageId;
 
     return dictionaryId;
+}
+
+int lex_import_card(lex *lx, int dictionaryId, const char *word, const char *cardText, int indexLanguageId, int contentLanguageId)
+{
+    int querySize = 1024;
+    char query[querySize];
+    sprintf(query, "insert into cards(word, dictionary_id, card, word_language_id, card_language_id) values(?, ?, ?, ?, ?)");
+    
+    int id = -1;
+    char *tail = 0;
+	sqlite3_stmt* stmt = 0;
+	int result = sqlite3_prepare_v2(lx->dataDb, query, querySize, &stmt, (const char**)&tail);
+    if(SQLITE_OK == result)
+    {
+        result = sqlite3_bind_text(stmt, 1, word, strlen(word) * sizeof(char), SQLITE_STATIC);
+        if(SQLITE_OK == result)
+        {
+            result = sqlite3_bind_int(stmt, 2, dictionaryId);
+            if(SQLITE_OK == result)
+            {
+                result = sqlite3_bind_text(stmt, 3, cardText, strlen(cardText) * sizeof(char), SQLITE_STATIC);
+                if(SQLITE_OK == result)
+                {
+                    result = sqlite3_bind_int(stmt, 4, indexLanguageId);
+                    if(SQLITE_OK == result)
+                    {
+                        result = sqlite3_bind_int(stmt, 5, contentLanguageId);
+                        if(SQLITE_OK == result)
+                        {
+                            result = sqlite3_step(stmt);
+                            if(SQLITE_ROW == result || SQLITE_DONE == result)
+                            {
+                                id = sqlite3_last_insert_rowid(lx->dataDb);
+                            }
+                            else
+                            {
+                                printf("error: sqlite3_step == %s\r\n", sqlite3_errmsg(lx->dataDb));
+                            }
+                        }
+                        else
+                        {
+                            printf("error: sqlite3_bind == %s\r\n", sqlite3_errmsg(lx->dataDb));
+                        }
+                    }
+                    else
+                    {
+                        printf("error: sqlite3_bind == %s\r\n", sqlite3_errmsg(lx->dataDb));
+                    }
+                }
+                else
+                {
+                    printf("error: sqlite3_bind == %s\r\n", sqlite3_errmsg(lx->dataDb));
+                }
+            }
+            else
+            {
+                printf("error: sqlite3_bind == %s\r\n", sqlite3_errmsg(lx->dataDb));
+            }
+        }
+        else
+        {
+            printf("error: sqlite3_bind == %s\r\n", sqlite3_errmsg(lx->dataDb));
+        }
+    }
+    else
+    {
+        printf("error: sqlite3_prepare_v2 == %s\r\n", sqlite3_errmsg(lx->dataDb));
+    }
+    
+    if(SQLITE_OK != sqlite3_finalize(stmt))
+    {
+        printf("error: sqlite3_finalize == %s\r\n", sqlite3_errmsg(lx->dataDb));
+    }
+    
+    return id;
 }
                   /*                            
                                               

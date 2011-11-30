@@ -79,7 +79,7 @@
     return enabled;
 }
 
-- (int) importDictionary:(NSString*)name indexLanguage:(NSString*)iLang contentLanguage:(NSString*)cLang
+- (int) importDictionary:(NSString*)name indexLanguage:(NSString*)iLang contentLanguage:(NSString*)cLang indexLanguageId:(int*)ilId contentLanguageId:(int*)clId
 {
     lex* lx = nil;
     int dicId;
@@ -88,10 +88,20 @@
         const char *dicName = [name cStringUsingEncoding:NSUTF8StringEncoding];
         const char *indexLanguage = [iLang cStringUsingEncoding:NSUTF8StringEncoding];
         const char *contentLanguage = [cLang cStringUsingEncoding:NSUTF8StringEncoding];
-        dicId = lex_import_dictionary(lx, dicName, indexLanguage, contentLanguage);
+        dicId = lex_import_dictionary(lx, dicName, indexLanguage, contentLanguage, ilId, clId);
     }
     lex_close(lx);
     return dicId;
+}
+
+- (void) importCard:(char*)cardText forWord:(char*)word intoDictionary:(int)dictionaryId indexLanguageId:(int)ilId contentLanguageId:(int)clId
+{
+    lex* lx = nil;
+    if(lex_open((char*)[[Global sharedInstance].dataFileName UTF8String], (char*)[[Global sharedInstance].settingsFileName UTF8String], &lx, utf8_compare) == 0)
+    {
+        lex_import_card(lx, dictionaryId, word, cardText, ilId, clId);
+    }
+    lex_close(lx);
 }
 
 

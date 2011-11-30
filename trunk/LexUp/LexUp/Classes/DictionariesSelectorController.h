@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "lexcore.h"
 
-
 @interface DictionariesSelectorController : UITableViewController
 {
     lex_dictionaries* _dictionaries;
@@ -17,5 +16,7 @@
 }
 
 - (lex_dictionaries*) get_dictionaries;
+
+- (void) reloadView;
 
 @end

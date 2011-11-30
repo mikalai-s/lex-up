@@ -17,11 +17,15 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    DLog();
+    
     return [_groupedDictionaries count] + 1 /* import row */;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    DLog();
+    
     // if it's import row
     if(section == 0)
         return 1;
@@ -33,6 +37,8 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
+    DLog();
+    
     UITableViewCell* cell;
     
     if(indexPath.section > 0)
@@ -76,6 +82,8 @@
 
 -(void)dictionaryEnabled:(id)sender
 {
+    DLog();
+    
     UISwitch* sw = (UISwitch*)sender;
     UITableViewCell*cell = (UITableViewCell*)sw.superview;
     NSIndexPath* cellPath = [self.tableView indexPathForCell:cell];
@@ -101,17 +109,16 @@
 }
 */
 
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void) loadDictionaries
+{
+    DLog();
     
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
-    self.tableView.allowsSelection = NO;
-
     SqliteConnection *con = [[SqliteConnection alloc] init];
     _dictionaries = [con getDictionaries];
     [con release];
+    
+    if(_dictionaries == 0)
+        return;
     
     _groupedDictionaries = [[NSMutableDictionary alloc] init];
     for(int i = 0; i < _dictionaries->count; i ++)
@@ -140,16 +147,51 @@
     }
 }
 
+- (void) clearDictionaries
+{
+    DLog();
+    
+    [_groupedDictionaries release];
+    
+    lex_free_dictionaries(&_dictionaries);
+}
+
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad {
+    DLog();
+    
+    [super viewDidLoad];
+    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
+    self.tableView.allowsSelection = NO;
+    
+    [self loadDictionaries];
+}
+
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
  {
+     DLog();
+     
      if(indexPath.section == 0)
      {
-         ImportDictionariesController* crl = [[ImportDictionariesController alloc] init];
+         ImportDictionariesController* crl = [[ImportDictionariesController alloc] initWithBackView:self];
          [self.navigationController pushViewController:crl animated:YES];
+ 
          [crl release];
      }
  }
+
+- (void)reloadView
+{
+    DLog();
+    
+    [self clearDictionaries];
+    [self loadDictionaries];
+    [self.tableView reloadData];
+}
+
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -176,10 +218,7 @@
 - (void)dealloc {
     [super dealloc];
     
-    [_groupedDictionaries release];
-    
-    lex_free_dictionaries(&_dictionaries);
-    
+    [self clearDictionaries];    
 }
 
 
