@@ -12,13 +12,14 @@
 #import "SSZipArchive.h"
 #import "SqliteConnection.h"
 #import "Global.h"
-#import "DictionariesSelectorController.h"
+#import "DictionaryConfigController.h"
+#import "EntitiesConverter.h"
 
 @implementation ImportDictionariesController
 
 
 
-- (id)initWithBackView:(DictionariesSelectorController *)backController
+- (id)initWithBackView:(DictionaryConfigController *)backController
 {
     DLog();
     
@@ -113,21 +114,29 @@
     
     TBXML *tbxml = [[TBXML alloc] initWithXMLFile:filePath];
     
-    NSString *name = [TBXML valueOfAttributeNamed:@"name" forElement:tbxml.rootXMLElement];
-    NSString *indexLanguage = [TBXML valueOfAttributeNamed:@"indexLanguage" forElement:tbxml.rootXMLElement];
-    NSString *contentLanguage = [TBXML valueOfAttributeNamed:@"contentLanguage" forElement:tbxml.rootXMLElement];
+    NSString *name = [TBXML valueOfAttributeNamed:@"n" forElement:tbxml.rootXMLElement];
+    NSString *indexLanguage = [TBXML valueOfAttributeNamed:@"i" forElement:tbxml.rootXMLElement];
+    NSString *contentLanguage = [TBXML valueOfAttributeNamed:@"c" forElement:tbxml.rootXMLElement];
     
     int ilId, clId;
     
     SqliteConnection *con = [[SqliteConnection alloc] init];
     int dictionaryId = [con importDictionary:name indexLanguage:indexLanguage contentLanguage:contentLanguage indexLanguageId:&ilId contentLanguageId:&clId];
     
-    TBXMLElement *cardElement = tbxml.rootXMLElement->firstChild;
-    while(cardElement != 0)
+    EntitiesConverter *converter = [[EntitiesConverter alloc] init];
+    
+    TBXMLElement *entry = tbxml.rootXMLElement->firstChild;
+    while(entry != 0)
     {
-        [con importCard:cardElement->text forWord:cardElement->firstAttribute->value intoDictionary:dictionaryId indexLanguageId:ilId contentLanguageId:clId];
+        TBXMLElement *wordElement = entry->firstChild;
+        NSString* word = [converter convertEntiesInString:[TBXML textForElement:wordElement]];
+
+        TBXMLElement *cardElement = wordElement->nextSibling;
+        NSString* card = [converter convertEntiesInString:[TBXML textForElement:cardElement]];
+
+        [con importCard:card forWord:word intoDictionary:dictionaryId indexLanguageId:ilId contentLanguageId:clId];
         
-        cardElement = cardElement->nextSibling;
+        entry = entry->nextSibling;
     }
     
     [tbxml release];

@@ -94,12 +94,12 @@
     return dicId;
 }
 
-- (void) importCard:(char*)cardText forWord:(char*)word intoDictionary:(int)dictionaryId indexLanguageId:(int)ilId contentLanguageId:(int)clId
+- (void) importCard:(NSString*)cardText forWord:(NSString*)word intoDictionary:(int)dictionaryId indexLanguageId:(int)ilId contentLanguageId:(int)clId
 {
     lex* lx = nil;
     if(lex_open((char*)[[Global sharedInstance].dataFileName UTF8String], (char*)[[Global sharedInstance].settingsFileName UTF8String], &lx, utf8_compare) == 0)
     {
-        lex_import_card(lx, dictionaryId, word, cardText, ilId, clId);
+        lex_import_card(lx, dictionaryId, [word cStringUsingEncoding:NSUTF8StringEncoding], [cardText cStringUsingEncoding:NSUTF8StringEncoding], ilId, clId);
     }
     lex_close(lx);
 }

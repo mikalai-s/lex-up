@@ -13,13 +13,13 @@
 #include "stdio.h"
 
 void lex_show_error(char *format, ...)
-{
+{/*
 #ifdef DEBUG
     va_list arguments;
     va_start(arguments,format);
     printf(format, arguments);
     va_end(arguments);
-#endif
+#endif*/
 }
 
 char* copy_string(char* src)
@@ -149,7 +149,7 @@ int lex_get_language(lex* lx, long id, lex_language **lang)
 {
     int querySize = 512;
     char query[querySize];
-    sprintf(query, "select l.id, l.name, l.code from languages as l where l.id = %ld", id);
+    sprintf(query, "select l.rowid, l.name, l.code from languages as l where l.rowid = %ld", id);
     lex_show_error("%s:\r\n", query);
     
 	sqlite3_stmt* stmt = 0;
@@ -477,8 +477,8 @@ int lex_get_cards_by_word(lex* lx, char* word, lex_cards** cards)
     int querySize = 1024;
     char query[querySize];
     sprintf(query, 
-            "select 0, c.word, d.id, d.name, c.card from cards as c \
-            inner join dictionaries as d on c.dictionary_id = d.id \
+            "select 0, c.word, d.rowid, d.name, c.card from cards as c \
+            inner join dictionaries as d on c.dictionary_id = d.rowid \
             where c.word = ? \
             order by ui_order asc");
     lex_show_error("%s:\r\n...with paramter '%s'\r\n", query, word);
@@ -556,7 +556,7 @@ int lex_get_dictionaries(lex* lx, long wordLanguageId, lex_dictionaries** lFetch
     
     int querySize = 256;
     char query[querySize];
-    sprintf(query, "select id, name, ui_enabled from dictionaries where word_language_id = %ld", wordLanguageId);
+    sprintf(query, "select rowid, name, ui_enabled from dictionaries where word_language_id = %ld", wordLanguageId);
     lex_show_error("%s:\r\n", query);
     
 	sqlite3_stmt* stmt = 0;
@@ -612,8 +612,8 @@ int lex_get_all_dictionaries(lex* lx, lex_dictionaries** lFetch)
     
     int querySize = 256;
     char query[querySize];
-    sprintf(query, "select d.id, d.name, l.id, l.name, l.code from dictionaries as d inner join languages as l on d.word_language_id = l.id order by ui_order asc");
-    lex_show_error("%s:\r\n", query);
+    sprintf(query, "select d.rowid, d.name, l.rowid, l.name, l.code from dictionaries as d inner join languages as l on d.word_language_id = l.rowid order by ui_order asc");
+   // lex_show_error("%s:\r\n", query);
     
 	sqlite3_stmt* stmt = 0;
 	char *tail = 0;
@@ -849,7 +849,7 @@ int lex_settings_set_option(lex *lx, char *option, int value)
 int lex_settings_get_dictionary_enabled(lex *lx, int dicId, int *enabled)
 {
     char query[128];
-    sprintf(query, "select count(*) from enabled_dictionaries where id = %d", dicId);
+    sprintf(query, "select count(*) from enabled_dictionaries where rowid = %d", dicId);
     
     sqlite3_stmt* stmt = 0;
     char *tail = 0;
@@ -887,9 +887,9 @@ int lex_settings_set_dictionary_enabled(lex *lx, int dicId, int enabled)
     char *error;
     char query[128];
     sprintf(query, enabled ? 
-            "delete from enabled_dictionaries where id = %d; \
+            "delete from enabled_dictionaries where rowid = %d; \
              insert into enabled_dictionaries values(%d)" : 
-            "delete from enabled_dictionaries where id = %d", dicId, dicId);
+            "delete from enabled_dictionaries where rowid = %d", dicId, dicId);
     if(SQLITE_OK != sqlite3_exec(lx->settingsDb, query, 0, 0, &error))
     {
         printf("error in setting dictioary enabled: sqlite3_exec == %s\r\n", error);
@@ -903,7 +903,7 @@ int lex_settings_get_enabled_dictionaries(lex *lx, int *count, int *dicIds)
     int c = 0;
     
     char query[128];
-    sprintf(query, "select id from enabled_dictionaries");
+    sprintf(query, "select rowid from enabled_dictionaries");
     
     sqlite3_stmt* stmt = 0;
     char *tail = 0;

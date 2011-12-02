@@ -37,13 +37,14 @@
 		9780B3A41481C0750006FB1F /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 9780B39E1481C0750006FB1F /* SSZipArchive.m */; };
 		978347C71470ABE300B303F4 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 978347C61470ABE300B303F4 /* MainWindow-iPad.xib */; };
 		97ADC2D91485FBFD000707F2 /* data.slt in Resources */ = {isa = PBXBuildFile; fileRef = 97ADC2D81485FBFD000707F2 /* data.slt */; };
+		97F0BA7A1486047300261EC7 /* DictionaryConfigController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F0BA781486047300261EC7 /* DictionaryConfigController.m */; };
+		97F0BA7B1486047300261EC7 /* DictionaryConfigController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97F0BA791486047300261EC7 /* DictionaryConfigController.xib */; };
+		97F0BA8014887C2B00261EC7 /* EntitiesConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F0BA7F14887C2B00261EC7 /* EntitiesConverter.m */; };
 		CE873CCF12FDFAFB00ED742F /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE873CC712FDFAFB00ED742F /* Entitlements.plist */; };
 		CE873CD012FDFAFB00ED742F /* EntriesListView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE873CC912FDFAFB00ED742F /* EntriesListView.m */; };
 		CE873CD112FDFAFB00ED742F /* LexUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE873CCA12FDFAFB00ED742F /* LexUpViewController.xib */; };
 		CE873CD212FDFAFB00ED742F /* WordDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE873CCC12FDFAFB00ED742F /* WordDescriptionViewController.m */; };
 		CE873CD312FDFAFB00ED742F /* WordDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE873CCD12FDFAFB00ED742F /* WordDescriptionViewController.xib */; };
-		CE873CDC12FDFB1800ED742F /* DictionariesSelectorController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE873CD512FDFB1800ED742F /* DictionariesSelectorController.m */; };
-		CE873CDD12FDFB1800ED742F /* DictionariesSelectorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE873CD612FDFB1800ED742F /* DictionariesSelectorController.xib */; };
 		CE873CDE12FDFB1800ED742F /* Global.m in Sources */ = {isa = PBXBuildFile; fileRef = CE873CD812FDFB1800ED742F /* Global.m */; };
 		CE873CDF12FDFB1800ED742F /* LexUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE873CDA12FDFB1800ED742F /* LexUpViewController.m */; };
 		CE873CF412FDFB4100ED742F /* lexcore.c in Sources */ = {isa = PBXBuildFile; fileRef = CE873CF012FDFB4100ED742F /* lexcore.c */; };
@@ -112,6 +113,12 @@
 		9780B39E1481C0750006FB1F /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
 		978347C61470ABE300B303F4 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		97ADC2D81485FBFD000707F2 /* data.slt */ = {isa = PBXFileReference; lastKnownFileType = file; path = data.slt; sourceTree = "<group>"; };
+		97F0BA771486047300261EC7 /* DictionaryConfigController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryConfigController.h; sourceTree = "<group>"; };
+		97F0BA781486047300261EC7 /* DictionaryConfigController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryConfigController.m; sourceTree = "<group>"; };
+		97F0BA791486047300261EC7 /* DictionaryConfigController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DictionaryConfigController.xib; path = Classes/DictionaryConfigController.xib; sourceTree = "<group>"; };
+		97F0BA7C14874EC900261EC7 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		97F0BA7E14887C2B00261EC7 /* EntitiesConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntitiesConverter.h; sourceTree = "<group>"; };
+		97F0BA7F14887C2B00261EC7 /* EntitiesConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntitiesConverter.m; sourceTree = "<group>"; };
 		CE873CC712FDFAFB00ED742F /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		CE873CC812FDFAFB00ED742F /* EntriesListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EntriesListView.h; path = ../EntriesListView.h; sourceTree = "<group>"; };
 		CE873CC912FDFAFB00ED742F /* EntriesListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EntriesListView.m; path = ../EntriesListView.m; sourceTree = "<group>"; };
@@ -119,9 +126,6 @@
 		CE873CCB12FDFAFB00ED742F /* WordDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WordDescriptionViewController.h; path = ../WordDescriptionViewController.h; sourceTree = "<group>"; };
 		CE873CCC12FDFAFB00ED742F /* WordDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WordDescriptionViewController.m; path = ../WordDescriptionViewController.m; sourceTree = "<group>"; };
 		CE873CCD12FDFAFB00ED742F /* WordDescriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WordDescriptionViewController.xib; sourceTree = "<group>"; };
-		CE873CD412FDFB1800ED742F /* DictionariesSelectorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionariesSelectorController.h; sourceTree = "<group>"; };
-		CE873CD512FDFB1800ED742F /* DictionariesSelectorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionariesSelectorController.m; sourceTree = "<group>"; };
-		CE873CD612FDFB1800ED742F /* DictionariesSelectorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DictionariesSelectorController.xib; path = Classes/DictionariesSelectorController.xib; sourceTree = "<group>"; };
 		CE873CD712FDFB1800ED742F /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
 		CE873CD812FDFB1800ED742F /* Global.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Global.m; sourceTree = "<group>"; };
 		CE873CD912FDFB1800ED742F /* LexUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LexUpViewController.h; sourceTree = "<group>"; };
@@ -166,8 +170,6 @@
 				973C5D7D147F4F760007346E /* ASI */,
 				CE8D94BC1303A1170030ACD8 /* LexcoreWrappers */,
 				CE873CEE12FDFB4100ED742F /* lexcore */,
-				CE873CD412FDFB1800ED742F /* DictionariesSelectorController.h */,
-				CE873CD512FDFB1800ED742F /* DictionariesSelectorController.m */,
 				CE873CD712FDFB1800ED742F /* Global.h */,
 				CE873CD812FDFB1800ED742F /* Global.m */,
 				CE873CD912FDFB1800ED742F /* LexUpViewController.h */,
@@ -181,6 +183,8 @@
 				CE873CCC12FDFAFB00ED742F /* WordDescriptionViewController.m */,
 				1D3623240D0F684500981E51 /* LexUpAppDelegate.h */,
 				1D3623250D0F684500981E51 /* LexUpAppDelegate.m */,
+				97F0BA771486047300261EC7 /* DictionaryConfigController.h */,
+				97F0BA781486047300261EC7 /* DictionaryConfigController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -196,6 +200,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				97F0BA7C14874EC900261EC7 /* CoreFoundation.framework */,
 				CE873CC712FDFAFB00ED742F /* Entitlements.plist */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -223,7 +228,7 @@
 				CE873E5412FF7CA000ED742F /* icon.png */,
 				CE873D8612FE03F000ED742F /* CardTemplate.html */,
 				CE873D9A12FE070500ED742F /* DictionaryTemplate.html */,
-				CE873CD612FDFB1800ED742F /* DictionariesSelectorController.xib */,
+				97F0BA791486047300261EC7 /* DictionaryConfigController.xib */,
 				974FD707147DFD4600BF6CDA /* ImportDictionariesController.xib */,
 				CE873CCA12FDFAFB00ED742F /* LexUpViewController.xib */,
 				CE873CCD12FDFAFB00ED742F /* WordDescriptionViewController.xib */,
@@ -340,6 +345,8 @@
 				CE8D92DB130110BA0030ACD8 /* SqliteConnection.m */,
 				CE8D94BD1303A14D0030ACD8 /* LexDictionary.h */,
 				CE8D94BE1303A14D0030ACD8 /* LexDictionary.m */,
+				97F0BA7E14887C2B00261EC7 /* EntitiesConverter.h */,
+				97F0BA7F14887C2B00261EC7 /* EntitiesConverter.m */,
 			);
 			name = LexcoreWrappers;
 			sourceTree = "<group>";
@@ -397,13 +404,13 @@
 				CE873CCF12FDFAFB00ED742F /* Entitlements.plist in Resources */,
 				CE873CD112FDFAFB00ED742F /* LexUpViewController.xib in Resources */,
 				CE873CD312FDFAFB00ED742F /* WordDescriptionViewController.xib in Resources */,
-				CE873CDD12FDFB1800ED742F /* DictionariesSelectorController.xib in Resources */,
 				CE873D8712FE03F000ED742F /* CardTemplate.html in Resources */,
 				CE873D9B12FE070500ED742F /* DictionaryTemplate.html in Resources */,
 				CE873E5512FF7CA000ED742F /* icon.png in Resources */,
 				978347C71470ABE300B303F4 /* MainWindow-iPad.xib in Resources */,
 				974FD709147DFD4600BF6CDA /* ImportDictionariesController.xib in Resources */,
 				97ADC2D91485FBFD000707F2 /* data.slt in Resources */,
+				97F0BA7B1486047300261EC7 /* DictionaryConfigController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,7 +425,6 @@
 				1D3623260D0F684500981E51 /* LexUpAppDelegate.m in Sources */,
 				CE873CD012FDFAFB00ED742F /* EntriesListView.m in Sources */,
 				CE873CD212FDFAFB00ED742F /* WordDescriptionViewController.m in Sources */,
-				CE873CDC12FDFB1800ED742F /* DictionariesSelectorController.m in Sources */,
 				CE873CDE12FDFB1800ED742F /* Global.m in Sources */,
 				CE873CDF12FDFB1800ED742F /* LexUpViewController.m in Sources */,
 				CE873CF412FDFB4100ED742F /* lexcore.c in Sources */,
@@ -442,6 +448,8 @@
 				9780B3A21481C0750006FB1F /* unzip.c in Sources */,
 				9780B3A31481C0750006FB1F /* zip.c in Sources */,
 				9780B3A41481C0750006FB1F /* SSZipArchive.m in Sources */,
+				97F0BA7A1486047300261EC7 /* DictionaryConfigController.m in Sources */,
+				97F0BA8014887C2B00261EC7 /* EntitiesConverter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

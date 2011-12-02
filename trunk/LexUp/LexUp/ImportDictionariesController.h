@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DictionariesSelectorController.h"
+#import "DictionaryConfigController.h"
 
 @interface ImportDictionariesController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 {
@@ -15,10 +15,10 @@
     
     NSMutableDictionary *dictionary;
     
-    DictionariesSelectorController *_backController;
+    DictionaryConfigController *_backController;
 }
 
-- (id)initWithBackView:(DictionariesSelectorController *)backController;
+- (id)initWithBackView:(DictionaryConfigController *)backController;
 
 - (void) importDictionary:(NSString *)filePath;
 

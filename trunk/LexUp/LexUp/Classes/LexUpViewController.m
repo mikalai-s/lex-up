@@ -82,7 +82,8 @@
     lex_words* candidates = [self get_candidates];
     if(candidates)
     {
-        WordDescriptionViewController* view = [[WordDescriptionViewController alloc] initWithEntry:candidates->items[indexPath.row]];
+        char *word = candidates->items[indexPath.row]->word;
+        WordDescriptionViewController* view = [[WordDescriptionViewController alloc] initWithWord:[NSString stringWithUTF8String:word]];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
     }

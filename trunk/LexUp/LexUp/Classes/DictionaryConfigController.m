@@ -1,19 +1,35 @@
 //
-//  DictionariesSelectorController.m
+//  DictionaryConfigController.m
 //  LexUp
 //
-//  Created by user on 11-01-18.
-//  Copyright 2011 nexuzzz. All rights reserved.
+//  Created by Mikalai on 11-11-29.
+//  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "DictionariesSelectorController.h"
+#import "DictionaryConfigController.h"
 #import "ImportDictionariesController.h"
 #import "Global.h"
 #import "SqliteConnection.h"
 #import "LexDictionary.h"
 
+@implementation DictionaryConfigController
 
-@implementation DictionariesSelectorController
+- (id)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:style];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc that aren't in use.
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -99,16 +115,6 @@
 }
 
 
-/*
- // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
-
 - (void) loadDictionaries
 {
     DLog();
@@ -147,41 +153,21 @@
     }
 }
 
-- (void) clearDictionaries
-{
-    DLog();
-    
-    [_groupedDictionaries release];
-    
-    lex_free_dictionaries(&_dictionaries);
-}
 
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-    DLog();
-    
-    [super viewDidLoad];
-    
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
-    self.tableView.allowsSelection = NO;
-    
-    [self loadDictionaries];
-}
 
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
- {
-     DLog();
-     
-     if(indexPath.section == 0)
-     {
-         ImportDictionariesController* crl = [[ImportDictionariesController alloc] initWithBackView:self];
-         [self.navigationController pushViewController:crl animated:YES];
- 
-         [crl release];
-     }
- }
+{
+    DLog();
+    
+    if(indexPath.section == 0)
+    {
+        ImportDictionariesController* crl = [[ImportDictionariesController alloc] initWithBackView:self];
+        [self.navigationController pushViewController:crl animated:YES];
+        
+        [crl release];
+    }
+}
 
 - (void)reloadView
 {
@@ -192,33 +178,128 @@
     [self.tableView reloadData];
 }
 
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
-
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+- (void) clearDictionaries
+{
+    DLog();
     
-    // Release any cached data, images, etc that aren't in use.
+    [_groupedDictionaries release];
+    
+    lex_free_dictionaries(&_dictionaries);
 }
 
-- (void)viewDidUnload {
+
+
+#pragma mark - View lifecycle
+
+- (void)viewDidLoad
+{   
+    DLog();
+    
+    [super viewDidLoad];
+    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
+    self.tableView.allowsSelection = NO;
+    
+    [self loadDictionaries];
+
+
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+ 
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)viewDidUnload
+{
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+
+
+/*
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
+*/
+
+/*
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }   
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }   
+}
+*/
+
+/*
+// Override to support rearranging the table view.
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+{
+}
+*/
+
+/*
+// Override to support conditional rearranging of the table view.
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return NO if you do not want the item to be re-orderable.
+    return YES;
+}
+*/
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Navigation logic may go here. Create and push another view controller.
+    /*
+     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     // ...
+     // Pass the selected object to the new view controller.
+     [self.navigationController pushViewController:detailViewController animated:YES];
+     [detailViewController release];
+     */
+}
 - (void)dealloc {
+    [self clearDictionaries];
     [super dealloc];
-    
-    [self clearDictionaries];    
 }
 
 

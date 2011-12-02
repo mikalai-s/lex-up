@@ -8,7 +8,7 @@
 
 #import "LexUpAppDelegate.h"
 #import "LexUpViewController.h"
-#import "DictionariesSelectorController.h"
+#import "DictionaryConfigController.h"
 #import "global.h"
 
 @implementation LexUpAppDelegate
@@ -34,7 +34,7 @@
     [controllers addObject:nav];
     [nav release];
     
-    DictionariesSelectorController* dicSel =  [[DictionariesSelectorController alloc] initWithStyle:UITableViewStyleGrouped];
+    DictionaryConfigController* dicSel =  [[DictionaryConfigController alloc] initWithStyle:UITableViewStyleGrouped];
     dicSel.title = @"Dictionaries";
     nav = [[UINavigationController alloc] initWithRootViewController:dicSel];
     [dicSel release];
@@ -43,7 +43,7 @@
     
     UITabBarController* tabController = [[UITabBarController alloc] init];
     tabController.viewControllers = controllers;
-    //tabController.delegate = self;
+   // tabController.delegate = self;
     
     [window addSubview:tabController.view];
     [window makeKeyAndVisible];
@@ -52,7 +52,10 @@
 }
 
 
-
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    
+}
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -14,17 +14,6 @@
 
 @implementation WordDescriptionViewController
 
-- (id) initWithEntry: (lex_word*) entry
-{
-    self = [super init];
-    if(self)
-    {
-        _entry = entry;
-        _word = [NSString stringWithUTF8String:_entry->word];        
-    }
-    return self;
-}
-
 - (id) initWithWord: (NSString*) word
 {
     self = [super init];
@@ -54,44 +43,6 @@
     for(int i = 0; i < cards->count; i ++)
     {      
         NSMutableString* card = [NSMutableString stringWithUTF8String:cards->items[i]->card];      
-        [card replaceOccurrencesOfString:@"\\[[t]" withString:@"<span class='t'>[" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        // {2} - special character that will be replaced with the ] after all
-        [card replaceOccurrencesOfString:@"[/t]\\]" withString:@"{2}</span>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[b]" withString:@"<span class='b'>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[/b]" withString:@"</span>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[u]" withString:@"<span class='u'>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[/u]" withString:@"</span>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[s]" withString:@"<span class='s'>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[/s]" withString:@"</span>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[p]" withString:@"<span class='p'>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[/p]" withString:@"</span>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[m1]" withString:@"<span class='m1'>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[m2]" withString:@"<span class='m2'>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[m3]" withString:@"<span class='m3'>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[/m]" withString:@"</span>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[trn]" withString:@"" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[/trn]" withString:@"" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[*]" withString:@"<span class='star'>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[/*]" withString:@"</span>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[ex]" withString:@"<span class='ex'>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[/ex]" withString:@"</span>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        //[card replaceOccurrencesOfString:@"- [ref]" withString:@"<a class='ref-brake' onclick='ref(this)'>- " options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[ref]" withString:@"<a class='ref' onclick='ref(this)'>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[/ref]" withString:@"</a>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[i]" withString:@"<span class='i'>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[/i]" withString:@"</span>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[c]" withString:@"<span class='c'>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[/c]" withString:@"</span>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[com]" withString:@"<span class='com'>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[/com]" withString:@"</span>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[lang" withString:@"<span class='lang'" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[/lang]" withString:@"</span>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[!trs" withString:@"<span class='lang'" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"[/!trs]" withString:@"</span>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"]" withString:@">" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"{2}" withString:@"]" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        [card replaceOccurrencesOfString:@"\n" withString:@"<br/>" options:NSLiteralSearch range:NSMakeRange(0, [card length])];
-        
         NSMutableString* dictionaryTemplate = [[NSString stringWithContentsOfFile:[Global sharedInstance].dictionaryTemplateFileName encoding:NSUTF8StringEncoding error:&error] mutableCopy];
         [dictionaryTemplate replaceOccurrencesOfString:@"{0}" withString:[NSString stringWithUTF8String:cards->items[i]->dictionary->name] options:NSLiteralSearch range:NSMakeRange(0, [dictionaryTemplate length])];
         [dictionaryTemplate replaceOccurrencesOfString:@"{1}" withString:[NSString stringWithUTF8String:cards->word->word] options:NSLiteralSearch range:NSMakeRange(0, [dictionaryTemplate length])];
